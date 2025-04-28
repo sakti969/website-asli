@@ -30,7 +30,7 @@ Route::get('/tiket/riwayat', [TicketController::class, 'history'])->name('ticket
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
 // Route untuk halaman admin mengelola tiket
-Route::get('/admin/tiket', [AdminController::class, 'manageTickets'])->name('admin.manageTickets');
+Route::get('/admin/tiket', [AdminController::class, 'manageTickets'])->name('admin.manageTickets')
 
 // Route untuk update tiket
 Route::get('/admin/tiket/', [AdminController::class, 'update'])->name('admin.updateTicket');
