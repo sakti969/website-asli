@@ -44,10 +44,18 @@
 </head>
 <body>
 
-  <div class="header">
-    <h1 class="fw-bold">Ticketing</h1>
-    <img src="{{ asset('images/garuda.png') }}" alt="Garuda">
-  </div>
+<div class="header d-flex align-items-center justify-content-center position-relative">
+  <!-- Tombol Kembali -->
+  <a href="{{ url()->previous() }}" class="btn btn-light position-absolute start-0 ms-3 mt-2">
+  Kembali
+</a>
+
+  <!-- Judul -->
+  <h1 class="fw-bold m-0">Ticketing</h1>
+
+  <!-- Gambar Garuda -->
+  <img src="{{ asset('images/garuda.png') }}" alt="Garuda">
+</div>
 
   <div class="container py-5">
     <h3 class="mb-4">Jadwal Pertandingan yang Akan Datang</h3>
@@ -55,7 +63,9 @@
     <div class="event-card">
       <div>
         <small>12 Juni 2025</small>
-        <h5 class="fw-bold">Indonesia vs Vietnam</h5>
+
+        <h5 class="fw-bold">Indonesia vs Argentina</h5>
+
         <p class="mb-0">Gelora Bung Karno Stadium</p>
       </div>
       <a href="{{ route('login') }}" class="btn btn-beli">Beli Tiket</a>
@@ -73,7 +83,25 @@
     <div class="event-card">
       <div>
         <small>27 Juni 2025</small>
-        <h5 class="fw-bold">Indonesia vs Korea</h5>
+        <h5 class="fw-bold">Indonesia vs Spain</h5>
+        <p class="mb-0">Gelora Bung Karno Stadium</p>
+      </div>
+      <a href="{{ route('login') }}" class="btn btn-beli">Beli Tiket</a>
+    </div>
+
+    <div class="event-card">
+      <div>
+        <small>2 Juli 2025</small>
+        <h5 class="fw-bold">Indonesia vs Arab Saudi</h5>
+        <p class="mb-0">Gelora Bung Karno Stadium</p>
+      </div>
+      <a href="{{ route('login') }}" class="btn btn-beli">Beli Tiket</a>
+    </div>
+
+    <div class="event-card">
+      <div>
+        <small>6 Juli 2025</small>
+        <h5 class="fw-bold">Indonesia vs Australia</h5>
         <p class="mb-0">Gelora Bung Karno Stadium</p>
       </div>
       <a href="{{ route('login') }}" class="btn btn-beli">Beli Tiket</a>

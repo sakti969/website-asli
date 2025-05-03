@@ -3,6 +3,10 @@
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\AdminController;
 
+Route::get('/login', function () {
+    return view('auth.login'); // Ini file resources/views/auth/login.blade.php (nanti dibuat)
+})->name('login');
+
 Route::get('/', function () {
     return view('welcome');
 });
