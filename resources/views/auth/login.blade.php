@@ -1,4 +1,3 @@
-<!-- resources/views/auth/login.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,6 @@
     <title>Login - Web Ticketing</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        /* Background gambar untuk seluruh halaman */
         body {
             background-image: url('{{ asset('images/bg-web.png') }}');
             background-size: cover;
@@ -36,11 +34,15 @@
                 <input type="password" name="password" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Masukkan password kamu" required>
             </div>
             <div>
-                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white rounded py-2 transition duration-200">
-                    Login
-                </button>
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white rounded py-2 transition duration-200">Login</button>          
             </div>
         </form>
+
+        <!-- Link ke halaman register -->
+        <div class="text-center mt-6">
+            <p class="text-sm text-gray-600">Belum punya akun?</p>
+            <a href="{{ route('register') }}" class="text-blue-600 hover:underline font-medium">Daftar Sekarang</a>
+        </div>
     </div>
 
 </body>

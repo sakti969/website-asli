@@ -43,3 +43,6 @@ Route::put('/admin/tiket/{id}', [AdminController::class, 'edit'])->name('admin.e
 
 // Route untuk autentikasi
 Route::post('/login', [LoginController::class, 'login']);
+
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+
