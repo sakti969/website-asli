@@ -63,7 +63,9 @@
     <div class="event-card">
       <div>
         <small>12 Juni 2025</small>
+
         <h5 class="fw-bold">Indonesia vs Argentina</h5>
+
         <p class="mb-0">Gelora Bung Karno Stadium</p>
       </div>
       <a href="{{ route('login') }}" class="btn btn-beli">Beli Tiket</a>
