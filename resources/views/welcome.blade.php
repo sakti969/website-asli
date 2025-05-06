@@ -19,6 +19,7 @@
 <body class="bg-light">
 
 <!-- Navbar -->
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-danger bg-danger navbar-dark shadow-sm">
     <div class="container">
         <a class="navbar-brand fw-bold" href="#">GarudaTicket</a>
