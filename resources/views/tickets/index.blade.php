@@ -119,7 +119,7 @@
 
   <!-- Header -->
   <div class="header">
-    <a href="{{ url()->previous() }}" class="btn btn-outline-danger rounded-pill fw-semibold d-flex align-items-center gap-2 position-absolute start-0 top-0 m-3 px-3 py-2 shadow-sm">
+    <a href="{{ url('/') }}" class="btn btn-outline-danger rounded-pill fw-semibold d-flex align-items-center gap-2 position-absolute start-0 top-0 m-3 px-3 py-2 shadow-sm">
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
     <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
     <path d="M8.354 11.354a.5.5 0 0 1-.708 0L4.5 8.207l3.146-3.147a.5.5 0 0 1 .708.708L5.707 8l2.647 2.646a.5.5 0 0 1 0 .708z"/>
@@ -144,18 +144,36 @@
         ['tanggal' => '2 Juli 2025', 'lawan' => 'Arab Saudi'],
         ['tanggal' => '6 Juli 2025', 'lawan' => 'Australia']
       ];
+      // Fungsi untuk menentukan link sesuai lawan
+        function getLinkHarga($lawan) {
+            $lawan = strtolower(trim($lawan));
+            switch ($lawan) {
+                case 'australia':
+                    return route('harga');
+                case 'japan':
+                    return route('harga2');
+                case 'spain':
+                    return route('harga3');
+                default:
+                    return route('harga');
+            }
+      }
     @endphp
 
     @foreach ($matches as $index => $match)
     <div class="event-card"
-         data-aos="{{ $index % 2 === 0 ? 'fade-left' : 'fade-right' }}"
-         data-aos-delay="{{ $index * 100 }}">
+        data-aos="{{ $index % 2 === 0 ? 'fade-left' : 'fade-right' }}"
+        data-aos-delay="{{ $index * 100 }}">
       <div>
         <small>{{ $match['tanggal'] }}</small>
         <h5 class="fw-bold mt-1">Indonesia vs {{ $match['lawan'] }}</h5>
         <p class="mb-0 text-muted">Gelora Bung Karno Stadium</p>
       </div>
-      <a href="{{ route('login') }}" class="btn btn-beli">Beli Tiket</a>
+      @auth
+        <a href="{{ getLinkHarga($match['lawan']) }}" class="btn btn-beli">Beli Tiket</a>
+      @else
+        <a href="{{ route('login') }}" class="btn btn-beli">Beli Tiket</a>
+      @endauth
     </div>
     @endforeach
   </div>

@@ -51,6 +51,16 @@
         <li class="nav-item"><a class="nav-link" href="#keunggulan">Keunggulan</a></li>
         <li class="nav-item"><a class="nav-link" href="#info">Info</a></li>
         <li class="nav-item"><a class="nav-link" href="#hubungi">Hubungi</a></li>
+        @auth
+          <!-- Jika sudah login -->
+          <li class="nav-item">
+            <form action="{{ route('logout') }}" method="POST" class="d-inline">
+              @csrf
+              <button type="submit" class="btn btn-outline-light btn-sm ms-3">Logout</button>
+            </form>
+          </li>
+        @else
+        @endauth
       </ul>
     </div>
   </div>

@@ -2,14 +2,40 @@
 
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\SignupController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 Route::get('/login', function () {
-    return view('auth.login'); // Ini file resources/views/auth/login.blade.php (nanti dibuat)
+    return view('auth.login');
 })->name('login');
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/harga', function() {
+    return view('hargatiket.harga');
+})->name('harga');
+
+Route::get('/harga2', function() {
+    return view('hargatiket.harga2');
+})->name('harga2');
+
+Route::get('/harga3', function() {
+    return view('hargatiket.harga3');
+})->name('harga3');
+
+Route::get('/checkout', function () {
+    return view('checkout.checkout');
+})->name('checkout');
+
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect('/');
+})->name('logout');
 
 // Route untuk daftar tiket
 Route::get('/tiket', [TicketController::class, 'index'])->name('tickets.index');
@@ -41,8 +67,9 @@ Route::put('/admin/tiket/', [AdminController::class, 'delete'])->name('admin.del
 // Route untuk edit tiket
 Route::put('/admin/tiket/{id}', [AdminController::class, 'edit'])->name('admin.editTicket');
 
-// Route untuk autentikasi
+// Route untuk Login
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
-
-Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
-
+// Route untuk Register
+Route::get('/signup', [SignupController::class, 'showSignupForm'])->name('signup');
+Route::post('/signup', [SignupController::class, 'signup']);

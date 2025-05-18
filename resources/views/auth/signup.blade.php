@@ -37,9 +37,15 @@
         </div>
       @endif
 
-      <form method="POST" action="/login" class="space-y-5">
+      <form method="POST" action="/signup" class="space-y-5">
         @csrf
         <input type="text" name="username" placeholder="Username"
+          class="w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500"
+          required />
+        <input type="text" name="email" placeholder="Email"
+          class="w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500"
+          required />
+        <input type="tel" name="no_telp" placeholder="No Telpon"
           class="w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500"
           required />
         <input type="password" name="password" placeholder="Kata Sandi"
@@ -47,14 +53,14 @@
           required />
         <button type="submit"
           class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-xl transition duration-200 text-lg shadow">
-          Login
+          Sign up
         </button>
       </form>
 
       <!-- Link ke Login -->
       <p class="mt-6 text-center text-sm text-gray-600">
-        Daftar Sekarang
-        <a href="/signup" class="text-red-600 font-semibold hover:underline">Klik di sini</a>
+        Login Sekarang
+        <a href="/login" class="text-red-600 font-semibold hover:underline">Klik di sini</a>
       </p>
     </div>
   </div>
