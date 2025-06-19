@@ -172,7 +172,8 @@
       @auth
         <a href="{{ getLinkHarga($match['lawan']) }}" class="btn btn-beli">Beli Tiket</a>
       @else
-        <a href="{{ route('login') }}" class="btn btn-beli">Beli Tiket</a>
+       <a href="{{ route('login', ['lawan' => strtolower($match['lawan'])]) }}" class="btn btn-beli">Beli Tiket</a>
+
       @endauth
     </div>
     @endforeach

@@ -9,8 +9,13 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     // Menampilkan form login
-    public function showLoginForm()
+    public function showLoginForm(Request $request)
     {
+        // Simpan lawan ke session jika ada dari query string
+        if ($request->has('lawan')) {
+            session(['match_redirect' => strtolower($request->lawan)]);
+        }
+
         return view('auth.login');
     }
 
@@ -26,7 +31,25 @@ class LoginController extends Controller
         // Coba login
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate(); // Cegah session fixation
-            return redirect()->intended('/harga');
+
+            // Cek apakah ada rencana redirect berdasarkan match
+            $redirect = session()->pull('match_redirect');
+
+            if ($redirect) {
+                switch ($redirect) {
+                    case 'australia':
+                        return redirect()->route('harga'); // route ke halaman harga
+                    case 'japan':
+                        return redirect()->route('harga2');
+                    case 'spain':
+                        return redirect()->route('harga3');
+                    default:
+                        return redirect('/'); // fallback jika lawan tidak dikenali
+                }
+            }
+
+            // Fallback redirect jika tidak ada match
+            return redirect('/harga');
         }
 
         // Gagal login, kembalikan dengan error
